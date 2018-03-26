@@ -10,24 +10,38 @@ use Magento\Framework\View\Element\Template;
 /**
  * Redstage Banner Page block
  */
-class Banner extends Template
+class Banner extends AbstractBlock
 {
     /**
-     * @param Template\Context $context
-     * @param array $data
+     * @return string
+     *
+     *
      */
-    public function __construct(Template\Context $context, array $data = [])
+    public function getContent()
     {
-        parent::__construct($context, $data);
+        return $this->helper->getBannerContent($this->getStore()->getCode());
     }
 
     /**
-     * Banner function
-     *
-     * @return string
+     * @return array
      */
-    public function getBanner()
+
+    public function getConfig()
     {
-        return 'This is a banner function for some logic...';
+        return [
+            'storage_key' => strtolower($this->getModuleName()) . '_banner',
+            'content'     => $this->getContent()
+
+        ];
     }
+
+    /**
+     * @return bool|string
+     */
+    public function getSerializedConfig()
+    {
+        return $this->serializer->serialize($this->getConfig());
+    }
+
+
 }

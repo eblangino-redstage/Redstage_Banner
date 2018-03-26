@@ -1,15 +1,28 @@
 <?php
 /**
- * Copyright © 2018 Redstage. All rights reserved.
+ * Copyright © Magento, Inc. All rights reserved.
  * See COPYING.txt for license details.
  */
-?>
 
-<?php
-/**
- * @var $block \Redstage\Banner\Block\Banner
- */
+// @codingStandardsIgnoreFile
 ?>
-
-<p><?php echo $block->getBanner(); ?></p>
-<p><?php echo __('This is a text.') ?></p>
+<?php /** @var \Redstage\Banner\Block\Promo $block */ ?>
+<div id="banner_promo_modal" style="display: none">
+    <!-- Content -->
+</div>
+<script>
+    window.bannerPromoConfig = <?php echo /* @escapeNotVerified */ $block->getSerializedConfig() ?>;
+</script>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "modal_overlay": {
+                        "component": "Redstage_Banner/js/banner"
+                    }
+                }
+            }
+        }
+    }
+</script>

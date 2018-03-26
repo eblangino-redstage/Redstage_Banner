@@ -1,0 +1,20 @@
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+.popup-promotional .modal-inner-wrap {
+    width: 50%;
+}
+
+.popup-promotional .modal-header,
+.popup-promotional .modal-footer {
+    padding: 10px;
+    border: none !important;
+    text-align: left !important;
+}
+
+.popup-promotional .actions-toolbar {
+    margin-bottom: 0;
+    margin-top: auto;
+}
